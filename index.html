@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Викториан Ховор Зүйлсийн Сан & Готик Хээрийн Тэмдэглэл</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=IM+Fell+English:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       VICTORIAN CABINET OF CURIOSITIES & GOTHIC FIELD JOURNAL
+       Mongolian Localized Edition
+       ========================================================================== */
+    :root {
+      --bg-dark: #0d0f0e;
+      --ivy-dark: #1a3020;
+      --ivy-mid: #25422d;
+      --ivy-light: #365e40;
+      
+      --parchment: #f4eccf;
+      --parchment-dark: #e6dab5;
+      --parchment-ink: #1a1612;
+      --parchment-muted: #5c5243;
+      
+      --gold: #d4af37;
+      --gold-bright: #f3cf58;
+      --gold-dark: #8c6e1c;
+      --gold-glow: rgba(212, 175, 55, 0.35);
+
+      --font-heading: 'Cinzel Decorative', 'Cormorant Garamond', serif;
+      --font-body: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    /* Global Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--parchment);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(26, 48, 32, 0.45) 0%, transparent 70%),
+        radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 2px, transparent 2px, transparent 4px);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    /* Double Gold-Gilded Viewport Border Framing */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 3px double var(--gold);
+      outline: 2px solid var(--gold-dark);
+      outline-offset: 4px;
+      pointer-events: none;
+      z-index: 999;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      border: 1px dashed rgba(212, 175, 55, 0.3);
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); border-left: 1px solid var(--ivy-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--ivy-mid); border: 1px solid var(--gold); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+    /* Page Container */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-bottom: 6rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* ==========================================================================
+       HERO SECTION: MINIMAL TITLE & GOTHIC SUBHEADLINE (MONGOLIAN)
+       ========================================================================== */
+    .hero-section {
+      text-align: center;
+      padding: 3rem 1rem 4rem 1rem;
+      position: relative;
+    }
+
+    .curator-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--parchment);
+      letter-spacing: 0.08em;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 15px var(--gold-glow);
+      line-height: 1.2;
+    }
+
+    .gothic-subheadline {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--parchment-dark);
+      max-width: 780px;
+      margin: 1rem auto 0 auto;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    /* Gold Ornate Crest Divider */
+    .gold-crest-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      max-width: 320px;
+      color: var(--gold);
+    }
+    .gold-crest-divider::before,
+    .gold-crest-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .gold-crest-divider .crest-symbol {
+      font-size: 1.2rem;
+    }
+
+    /* ==========================================================================
+       THE CABINET: BENTO-BOX SPECIMEN GRID
+       ========================================================================== */
+    .cabinet-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--ivy-mid);
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--parchment-dark);
+    }
+
+    /* Bento Grid Layout */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Specimen Card Item */
+    .specimen-card {
+      position: relative;
+      background: var(--ivy-dark);
+      color: var(--parchment);
+      border: 2px solid var(--gold-dark);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                  color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                  transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                  border-color 0.4s ease;
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.6), 0 8px 25px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+
+    /* Corner Fleuron Brackets */
+    .specimen-card::before {
+      content: '⚜';
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 0.9rem;
+      color: var(--gold);
+      transition: color 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Bento Spans */
+    .card-specimen-1 { grid-column: span 7; min-height: 320px; }
+    .card-specimen-2 { grid-column: span 5; min-height: 320px; }
+    .card-specimen-3 { grid-column: span 5; min-height: 300px; }
+    .card-specimen-4 { grid-column: span 7; min-height: 300px; }
+
+    @media (max-width: 900px) {
+      .card-specimen-1, .card-specimen-2, .card-specimen-3, .card-specimen-4 {
+        grid-column: span 12;
+        min-height: 280px;
+      }
+    }
+
+    /* HOVER STATE CHANGE: Background flip to Parchment texture & Swapped text color */
+    .specimen-card:hover {
+      background: var(--parchment);
+      color: var(--parchment-ink);
+      border-color: var(--gold-bright);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px var(--gold-glow), 0 0 0 1px var(--gold-bright);
+    }
+
+    .specimen-card:hover::before {
+      color: #8c6e1c;
+      transform: rotate(45deg);
+    }
+
+    .specimen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .specimen-number {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      transition: color 0.4s ease;
+    }
+
+    .specimen-card:hover .specimen-number {
+      color: #735317;
+      font-weight: 700;
+    }
+
+    .specimen-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--ivy-light);
+      background: rgba(13, 15, 14, 0.4);
+      color: var(--parchment-dark);
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+    }
+
+    .specimen-card:hover .specimen-tag {
+      border-color: #8c6e1c;
+      background: rgba(230, 218, 181, 0.6);
+      color: var(--parchment-ink);
+    }
+
+    .specimen-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+      color: inherit;
+    }
+
+    .specimen-abstract {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      opacity: 0.88;
+      color: inherit;
+    }
+
+    .specimen-footer {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed rgba(212, 175, 55, 0.3);
+      padding-top: 0.75rem;
+    }
+
+    .specimen-card:hover .specimen-footer {
+      border-top-color: rgba(140, 110, 28, 0.4);
+    }
+
+    .specimen-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+
+    .specimen-action {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.4s ease;
+    }
+
+    .specimen-card:hover .specimen-action {
+      color: #8c6e1c;
+    }
+
+    /* Active Selected Card State */
+    .specimen-card.active-specimen {
+      border-color: var(--gold-bright);
+      box-shadow: inset 0 0 20px var(--gold-glow), 0 0 15px var(--gold-glow);
+    }
+
+    /* ==========================================================================
+       THE FIELD JOURNAL: DYNAMIC INTERACTIVE VIEWER (MONGOLIAN)
+       ========================================================================== */
+    .journal-section {
+      position: relative;
+    }
+
+    .journal-container {
+      background: var(--parchment);
+      color: var(--parchment-ink);
+      border: 3px double var(--gold);
+      outline: 2px solid var(--ivy-dark);
+      outline-offset: 4px;
+      padding: 3rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+      position: relative;
+    }
+
+    /* Wax Seal Accent */
+    .journal-wax-seal {
+      position: absolute;
+      top: -24px;
+      right: 35px;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, #8b0000 0%, #5a0000 100%);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--gold);
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+    }
+
+    .journal-header {
+      border-bottom: 2px double #8c6e1c;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .journal-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #8c6e1c;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+    }
+
+    .journal-title {
+      font-family: var(--font-heading);
+      font-size: 2.1rem;
+      color: #1a1612;
+      margin-top: 0.25rem;
+    }
+
+    .journal-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #735317;
+      font-weight: 700;
+    }
+
+    /* Dynamic Journal Grid Layout */
+    .journal-content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 850px) {
+      .journal-content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .journal-notes-col p {
+      font-family: var(--font-body);
+      font-size: 1.2rem;
+      line-height: 1.85;
+      color: #221d18;
+      margin-bottom: 1.25rem;
+    }
+
+    .journal-drop-cap {
+      font-family: var(--font-heading);
+      font-size: 3.8rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 12px;
+      color: #7a0000;
+    }
+
+    /* Metrics Ledger Box */
+    .journal-metrics-col {
+      background: rgba(230, 218, 181, 0.75);
+      border: 1px solid #8c6e1c;
+      padding: 1.75rem;
+      border-radius: 2px;
+    }
+
+    .metrics-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: #1a1612;
+      border-bottom: 1px solid #8c6e1c;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .metric-row {
+      margin-bottom: 1rem;
+    }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #735317;
+      text-transform: uppercase;
+      display: block;
+      font-weight: 700;
+    }
+
+    .metric-value {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1612;
+    }
+
+    /* Footer Note */
+    .journal-footer {
+      margin-top: 2rem;
+      border-top: 1px dashed #8c6e1c;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #5c5243;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ===================================================================
+         HERO SECTION: MINIMAL TITLE & GOTHIC SUBHEADLINE (MONGOLIAN)
+         =================================================================== -->
+    <header class="hero-section">
+      <span class="curator-tag">&mdash; БҮТЭЭН БАЙГУУЛСАН 1892 &bull; ЦАХИМ ЦУГЛУУЛАГЧ &mdash;</span>
+      <h1 class="hero-title">Лорд Дрэйвений Ховор Зүйлсийн Сан</h1>
+      <p class="gothic-subheadline">
+        Викториан стилийн цахим ховор зүйлс, бие даасан системийн архитектур болон готик дизайны ангилал зүйн архивын цуглуулга. Доорх сангаас сонирхсон үзмэрээ сонгон хээрийн тэмдэглэлтэй танилцана уу.
+      </p>
+      
+      <div class="gold-crest-divider">
+        <span class="crest-symbol">⚜ 🏛️ ⚜</span>
+      </div>
+    </header>
+
+    <!-- ===================================================================
+         THE CABINET: BENTO-BOX SPECIMEN GRID (MONGOLIAN)
+         =================================================================== -->
+    <section class="cabinet-section">
+      <div class="section-header">
+        <h2 class="section-title">Сангийн Ховор Үзмэрүүд</h2>
+        <span class="section-subtitle">ҮЗМЭРИЙГ СОНГОЖ ХЭЭРИЙН ТЭМДЭГЛЭЛИЙГ ҮЗНЭ ҮҮ</span>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- SPECIMEN I -->
+        <article class="specimen-card card-specimen-1 active-specimen" data-specimen="1" onclick="selectSpecimen(1)">
+          <div class="specimen-header">
+            <span class="specimen-number">ҮЗМЭР № I</span>
+            <span class="specimen-tag">Системийн Архитектур</span>
+          </div>
+          <div>
+            <h3 class="specimen-title">Алхимичийн Автомат Хөдөлгүүр</h3>
+            <p class="specimen-abstract">
+              Олон агентын цогц урсгалыг зохицуулах, процессын тасалдалгүй, дэлгэцийн бүтэц хазайхгүй ажиллах бие даасан гүйцэтгэлийн хүчирхэг систем.
+            </p>
+          </div>
+          <div class="specimen-footer">
+            <span class="specimen-meta">АНГИЛАЛ: АГЕНТ СИСТЕМ &bull; 2026</span>
+            <span class="specimen-action">ШИНЖЛЭХ &rarr;</span>
+          </div>
+        </article>
+
+        <!-- SPECIMEN II -->
+        <article class="specimen-card card-specimen-2" data-specimen="2" onclick="selectSpecimen(2)">
+          <div class="specimen-header">
+            <span class="specimen-number">ҮЗМЭР № II</span>
+            <span class="specimen-tag">Аюулгүй Байдал ба Нууцлал</span>
+          </div>
+          <div>
+            <h3 class="specimen-title">Шөнийн Нууц Цогцолбор Кодекс</h3>
+            <p class="specimen-abstract">
+              Орон зайн Web3 активуудад зориулагдсан zero-knowledge баталгаажуулалтын систем болон готик нууц шифрийн интерфэйс.
+            </p>
+          </div>
+          <div class="specimen-footer">
+            <span class="specimen-meta">АНГИЛАЛ: ZK-НУУЦЛАЛ &bull; 2025</span>
+            <span class="specimen-action">ШИНЖЛЭХ &rarr;</span>
+          </div>
+        </article>
+
+        <!-- SPECIMEN III -->
+        <article class="specimen-card card-specimen-3" data-specimen="3" onclick="selectSpecimen(3)">
+          <div class="specimen-header">
+            <span class="specimen-number">ҮЗМЭР № III</span>
+            <span class="specimen-tag">Орон Зайн 3D График</span>
+          </div>
+          <div>
+            <h3 class="specimen-title">Фантасмагориа Рендер Хөдөлгүүр</h3>
+            <p class="specimen-abstract">
+              Лааны гэрлийн физик, эзлэхүүнт манан, чулуун сийлбэрийн рельеф бүтэц бүхий WebGL шейдер систем.
+            </p>
+          </div>
+          <div class="specimen-footer">
+            <span class="specimen-meta">АНГИЛАЛ: ГРАФИК &bull; 2025</span>
+            <span class="specimen-action">ШИНЖЛЭХ &rarr;</span>
+          </div>
+        </article>
+
+        <!-- SPECIMEN IV -->
+        <article class="specimen-card card-specimen-4" data-specimen="4" onclick="selectSpecimen(4)">
+          <div class="specimen-header">
+            <span class="specimen-number">ҮЗМЭР № IV</span>
+            <span class="specimen-tag">UI/UX Ангилал Зүй</span>
+          </div>
+          <div>
+            <h3 class="specimen-title">Ботаника Web3 Ангилал Зүй</h3>
+            <p class="specimen-abstract">
+              Алтлаг чимэглэл, ургамлын ороонго элементүүд болон уян хатан торноос бүрдсэн Викториан стилийн дизайны систем.
+            </p>
+          </div>
+          <div class="specimen-footer">
+            <span class="specimen-meta">АНГИЛАЛ: ДИЗАЙНЫ СИСТЕМ &bull; 2026</span>
+            <span class="specimen-action">ШИНЖЛЭХ &rarr;</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         THE FIELD JOURNAL: DYNAMIC INTERACTIVE VIEWER (MONGOLIAN)
+         =================================================================== -->
+    <section class="journal-section" id="field-journal-viewer">
+      <div class="journal-container">
+        
+        <div class="journal-wax-seal">⚜</div>
+
+        <div class="journal-header">
+          <div>
+            <span id="journal-spec-num" class="journal-tag">ХЭЭРИЙН ТЭМДЭГЛЭЛ • ҮЗМЭР № I</span>
+            <h3 id="journal-spec-title" class="journal-title">Алхимичийн Автомат Хөдөлгүүр</h3>
+          </div>
+          <div class="journal-date" id="journal-spec-year">АРГЫН ТООЛЛЫН 2026</div>
+        </div>
+
+        <div class="journal-content-grid">
+          
+          <!-- Field Notes Column -->
+          <div class="journal-notes-col">
+            <p id="journal-notes-p1">
+              <span id="journal-drop-cap" class="journal-drop-cap">Э</span>нэхүү цахим үзмэрийг нарийвчлан шинжлэхэд бие даасан ажилчдын урсгал болон асинхрон мэдээлэл дамжуулах нарийн нийлмэл бүтэц илэрч байна. Нэг утастай санах ойн саатлаас бүрэн зайлсхийх зорилгоор тусгайлан зохион бүтээгдсэн.
+            </p>
+            <p id="journal-notes-p2">
+              Ажиллах процессын төлөв нь нарийн тоон хязгаарлалтын дүрмийг баримтлах бөгөөд глобал санах ойд ямар нэгэн түр зуурын алдаатай мэдээлэл хадгалагдахгүй. Бүх бүтцийн өөрчлөлтүүд архивын санамжид бүртгэгдэнэ.
+            </p>
+          </div>
+
+          <!-- Outcome Metrics Ledger Column -->
+          <div class="journal-metrics-col">
+            <h4 class="metrics-title">Үзмэрийн Үзүүлэлт ба Бүртгэл</h4>
+            
+            <div class="metric-row">
+              <span class="metric-label">Салбарын Ангилал</span>
+              <span id="metric-class" class="metric-value">Системийн Архитектур</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Гүйцэтгэлийн Хурд</span>
+              <span id="metric-latency" class="metric-value">&lt; 14ммс (99 хувь)</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Нэвтрүүлэх Чадвар</span>
+              <span id="metric-throughput" class="metric-value">12,500 Үйлдэл / Сек</span>
+            </div>
+
+            <div class="metric-row">
+              <span class="metric-label">Кураторын Төлөв</span>
+              <span id="metric-status" class="metric-value">Баталгаажсан ба Нэвтэрсэн ⚜</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="journal-footer">
+          <span>КУРАТОРЫН ХЭЭРИЙН ТЭМДЭГЛЭЛ • IV БОТ</span>
+          <span>ДРЭЙВЕН ЦАЗУУРЫН АРХИВД ТЭМДЭГЛЭВ</span>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Dynamic Piping Script (Mongolian Content) -->
+  <script>
+    // Mongolian Specimen Data Registry
+    const SPECIMENS_DATA = {
+      1: {
+        num: 'ХЭЭРИЙН ТЭМДЭГЛЭЛ • ҮЗМЭР № I',
+        title: 'Алхимичийн Автомат Хөдөлгүүр',
+        year: 'АРГЫН ТООЛЛЫН 2026',
+        dropCap: 'Э',
+        p1: 'нэхүү цахим үзмэрийг нарийвчлан шинжлэхэд бие даасан ажилчдын урсгал болон асинхрон мэдээлэл дамжуулах нарийн нийлмэл бүтэц илэрч байна. Нэг утастай санах ойн саатлаас бүрэн зайлсхийх зорилгоор тусгайлан зохион бүтээгдсэн.',
+        p2: 'Ажиллах процессын төлөв нь нарийн тоон хязгаарлалтын дүрмийг баримтлах бөгөөд глобал санах ойд ямар нэгэн түр зуурын алдаатай мэдээлэл хадгалагдахгүй. Бүх бүтцийн өөрчлөлтүүд архивын санамжид бүртгэгдэнэ.',
+        classification: 'Системийн Архитектур',
+        latency: '< 14ммс (99 хувь)',
+        throughput: '12,500 Үйлдэл / Сек',
+        status: 'Баталгаажсан ба Нэвтэрсэн ⚜'
+      },
+      2: {
+        num: 'ХЭЭРИЙН ТЭМДЭГЛЭЛ • ҮЗМЭР № II',
+        title: 'Шөнийн Нууц Цогцолбор Кодекс',
+        year: 'АРГЫН ТООЛЛЫН 2025',
+        dropCap: 'Ш',
+        p1: 'өнийн сарны туяан дор бүтээгдсэн энэхүү криптограф үзмэр нь Web3 активуудын нууцлалын баталгаажуулалтыг гүйцэтгэнэ. Нууцлалын алгоритм нь математик баталгааг готик загварын интерфэйсийн цаана маш оновчтой нуун ажиллуулдаг.',
+        p2: 'Хээрийн туршилтаар өндөр ачаалалтай нууцлалын баталгаажуулалтын үед ямар нэгэн санах ойн алдагдал гараагүй бөгөөд бүх гүйлгээний урсгалын нууцлал иж бүрэн хангагдсан.',
+        classification: 'Аюулгүй Байдал ба Нууцлал',
+        latency: '42ммс (ZK-Баталгаажуулалт)',
+        throughput: '3,200 Баталгаа / Мин',
+        status: 'Нууцаар Тамгалагдсан ⚜'
+      },
+      3: {
+        num: 'ХЭЭРИЙН ТЭМДЭГЛЭЛ • ҮЗМЭР № III',
+        title: 'Фантасмагориа Рендер Хөдөлгүүр',
+        year: 'АРГЫН ТООЛЛЫН 2025',
+        dropCap: 'Г',
+        p1: 'рафик үзмэрийн хээрийн шинжилгээгээр лааны хөдөлгөөнт гэрлийн физикийг чулуун бүтэц дээр бодит мэт буулгах WebGL шейдерийг харуулж байна. Хүрээлэн буй орчны гэрлийн тусгал цаг тухайд нь дахин боловсруулагддаг.',
+        p2: 'Рендерингийн хөдөлгүүр нь бүх төхөөрөмж дээр тогтвортой 60 FPS хурдыг хадгалах бөгөөд хүнд дуураймал файл татах шаардлагагүйгээр лааны гэрлийн савлагааг алгоритмаар тооцоолдог.',
+        classification: 'Орон Зайн 3D График',
+        latency: '60 FPS (16.6ммс кадрын хугацаа)',
+        throughput: '1.2 Сая Гувалжин / Сек',
+        status: 'Идэвхитэй Рендер ⚜'
+      },
+      4: {
+        num: 'ХЭЭРИЙН ТЭМДЭГЛЭЛ • ҮЗМЭР № IV',
+        title: 'Ботаника Web3 Ангилал Зүй',
+        year: 'АРГЫН ТООЛЛЫН 2026',
+        dropCap: 'Б',
+        p1: 'айгалийн өсөлт ба тоон системийн нарийн архитектур хоёр энэхүү UI/UX дизайны системд огтлолцож байна. Гүн ногоон өнгө, алтан сийлбэрэн хүрээ, хуучны илжгэн цаасны бүтэц нь дахин давтагдашгүй орчныг бүрдүүлдэг.',
+        p2: 'Бүх бүрэлдэхүүн хэсгүүд нь уян хатан торны динамикаар бүтээгдсэн бөгөөд дэлгэцийн ямар ч хэмжээнд нарийн хязгаарлалтын дүрмийг алдагдуулахгүйгээр зохицон харагдана.',
+        classification: 'UI/UX Ангилал Зүй',
+        latency: 'Хазайлтгүй Бүтэц (CLS 0.0)',
+        throughput: '100% Мобайл Зохицол',
+        status: 'Архивлагдсан ба Нийтлэгдсэн ⚜'
+      }
+    };
+
+    function selectSpecimen(id) {
+      const data = SPECIMENS_DATA[id];
+      if (!data) return;
+
+      // Update Specimen Card Active States
+      document.querySelectorAll('.specimen-card').forEach(card => {
+        card.classList.remove('active-specimen');
+      });
+      const activeCard = document.querySelector(`.specimen-card[data-specimen="${id}"]`);
+      if (activeCard) activeCard.classList.add('active-specimen');
+
+      // Dynamically Pipe Mongolian Data into Field Journal Component
+      document.getElementById('journal-spec-num').textContent = data.num;
+      document.getElementById('journal-spec-title').textContent = data.title;
+      document.getElementById('journal-spec-year').textContent = data.year;
+      
+      document.getElementById('journal-drop-cap').textContent = data.dropCap;
+      document.getElementById('journal-notes-p1').childNodes[1].nodeValue = data.p1;
+      document.getElementById('journal-notes-p2').textContent = data.p2;
+
+      document.getElementById('metric-class').textContent = data.classification;
+      document.getElementById('metric-latency').textContent = data.latency;
+      document.getElementById('metric-throughput').textContent = data.throughput;
+      document.getElementById('metric-status').textContent = data.status;
+
+      // Smooth scroll into view of the journal viewer if on mobile
+      if (window.innerWidth < 850) {
+        document.getElementById('field-journal-viewer').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>

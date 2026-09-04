@@ -1,0 +1,489 @@
+/* ==========================================================================
+   VICTORIAN CABINET OF CURIOSITIES & GOTHIC FIELD JOURNAL
+   Self-contained CSS Variables & Theme Engine
+   ========================================================================== */
+:root {
+  --bg-dark: #0d0f0e;
+  --ivy-dark: #1a3020;
+  --ivy-mid: #25422d;
+  --ivy-light: #365e40;
+  
+  --parchment: #f4eccf;
+  --parchment-dark: #e6dab5;
+  --parchment-ink: #1a1612;
+  --parchment-muted: #5c5243;
+  
+  --gold: #d4af37;
+  --gold-bright: #f3cf58;
+  --gold-dark: #8c6e1c;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+
+  --font-heading: 'Cinzel Decorative', Georgia, serif;
+  --font-body: 'IM Fell English', 'Playfair Display', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+body {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(26, 48, 32, 0.45) 0%, transparent 70%),
+    radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 2px, transparent 2px, transparent 4px);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 2.5rem;
+  position: relative;
+}
+
+/* 1. Double Gold-Gilded Viewport Border Framing */
+body::before {
+  content: '';
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 3px double var(--gold);
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 4px;
+  pointer-events: none;
+  z-index: 999;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  border: 1px dashed rgba(212, 175, 55, 0.3);
+  pointer-events: none;
+  z-index: 998;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); border-left: 1px solid var(--ivy-dark); }
+::-webkit-scrollbar-thumb { background: var(--ivy-mid); border: 1px solid var(--gold); }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* Page Container */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-bottom: 6rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   HERO SECTION: MINIMAL TITLE & GOTHIC SUBHEADLINE
+   ========================================================================== */
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem 4rem 1rem;
+  position: relative;
+}
+
+.curator-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 700;
+  color: var(--parchment);
+  letter-spacing: 0.12em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 15px var(--gold-glow);
+  line-height: 1.15;
+}
+
+.gothic-subheadline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--parchment-dark);
+  max-width: 700px;
+  margin: 1rem auto 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Gold Ornate Crest Divider */
+.gold-crest-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 320px;
+  color: var(--gold);
+}
+.gold-crest-divider::before,
+.gold-crest-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.gold-crest-divider .crest-symbol {
+  font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   THE CABINET: BENTO-BOX SPECIMEN GRID
+   ========================================================================== */
+.cabinet-section {
+  margin-bottom: 4rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--ivy-mid);
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--parchment-dark);
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+/* Specimen Card Item */
+.specimen-card {
+  position: relative;
+  background: var(--ivy-dark);
+  color: var(--parchment);
+  border: 2px solid var(--gold-dark);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.4s ease;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.6), 0 8px 25px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+/* Corner Fleuron Brackets */
+.specimen-card::before {
+  content: '⚜';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.9rem;
+  color: var(--gold);
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+/* Bento Spans */
+.card-specimen-1 { grid-column: span 7; min-height: 320px; }
+.card-specimen-2 { grid-column: span 5; min-height: 320px; }
+.card-specimen-3 { grid-column: span 5; min-height: 300px; }
+.card-specimen-4 { grid-column: span 7; min-height: 300px; }
+
+@media (max-width: 900px) {
+  .card-specimen-1, .card-specimen-2, .card-specimen-3, .card-specimen-4 {
+    grid-column: span 12;
+    min-height: 280px;
+  }
+}
+
+/* HOVER STATE CHANGE: Smooth background flip to Parchment texture & Swapped text color */
+.specimen-card:hover {
+  background: var(--parchment);
+  color: var(--parchment-ink);
+  border-color: var(--gold-bright);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px var(--gold-glow), 0 0 0 1px var(--gold-bright);
+}
+
+.specimen-card:hover::before {
+  color: #8c6e1c;
+  transform: rotate(45deg);
+}
+
+.specimen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.specimen-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  transition: color 0.4s ease;
+}
+
+.specimen-card:hover .specimen-number {
+  color: #735317;
+  font-weight: 700;
+}
+
+.specimen-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--ivy-light);
+  background: rgba(13, 15, 14, 0.4);
+  color: var(--parchment-dark);
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+
+.specimen-card:hover .specimen-tag {
+  border-color: #8c6e1c;
+  background: rgba(230, 218, 181, 0.6);
+  color: var(--parchment-ink);
+}
+
+.specimen-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  color: inherit;
+}
+
+.specimen-abstract {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  color: inherit;
+}
+
+.specimen-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed rgba(212, 175, 55, 0.3);
+  padding-top: 0.75rem;
+}
+
+.specimen-card:hover .specimen-footer {
+  border-top-color: rgba(140, 110, 28, 0.4);
+}
+
+.specimen-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.specimen-action {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.4s ease;
+}
+
+.specimen-card:hover .specimen-action {
+  color: #8c6e1c;
+}
+
+/* Active Selected Card State */
+.specimen-card.active-specimen {
+  border-color: var(--gold-bright);
+  box-shadow: inset 0 0 20px var(--gold-glow), 0 0 15px var(--gold-glow);
+}
+
+/* ==========================================================================
+   THE FIELD JOURNAL: DYNAMIC INTERACTIVE VIEWER COMPONENT
+   ========================================================================== */
+.journal-section {
+  position: relative;
+}
+
+.journal-container {
+  background: var(--parchment);
+  color: var(--parchment-ink);
+  border: 3px double var(--gold);
+  outline: 2px solid var(--ivy-dark);
+  outline-offset: 4px;
+  padding: 3rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+  position: relative;
+}
+
+/* Wax Seal Accent */
+.journal-wax-seal {
+  position: absolute;
+  top: -24px;
+  right: 35px;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #8b0000 0%, #5a0000 100%);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gold);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+.journal-header {
+  border-bottom: 2px double #8c6e1c;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.journal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #8c6e1c;
+  letter-spacing: 0.2em;
+}
+
+.journal-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: #1a1612;
+  margin-top: 0.25rem;
+}
+
+.journal-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #735317;
+  font-weight: 700;
+}
+
+/* Dynamic Journal Grid Layout */
+.journal-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 850px) {
+  .journal-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.journal-notes-col p {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #221d18;
+  margin-bottom: 1.25rem;
+}
+
+.journal-drop-cap {
+  font-family: var(--font-heading);
+  font-size: 3.8rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 12px;
+  color: #7a0000;
+}
+
+/* Metrics Ledger Box */
+.journal-metrics-col {
+  background: rgba(230, 218, 181, 0.7);
+  border: 1px solid #8c6e1c;
+  padding: 1.75rem;
+  border-radius: 2px;
+}
+
+.metrics-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: #1a1612;
+  border-bottom: 1px solid #8c6e1c;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.metric-row {
+  margin-bottom: 1rem;
+}
+
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #735317;
+  text-transform: uppercase;
+  display: block;
+}
+
+.metric-value {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1612;
+}
+
+/* Footer Note */
+.journal-footer {
+  margin-top: 2rem;
+  border-top: 1px dashed #8c6e1c;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #5c5243;
+}
